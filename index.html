@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="title" content="Happy Birthday Website 2.0 | Aoudumber Bade">
+  <meta name="github" content="https://github.com/Aoudumber-Bade">
+  <title>Happy Birthday Dolly ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="extras.css">
+  <script src="lib/confetti.min.js"></script>
+  <!-- ✏️ EDIT HERE: sab kuch yahin se badlo -->
+  <script>
+    window.CONFIG = {
+      herName: "Dolly",            // ✏️ chhota naam (chat, gate, cake)
+      herFull: "Queen Dolly 👑",      // ✏️ photo ke neeche badge
+      myName: "Tafu",                // ✏️ tumhara naam
+      herAvatar: "Images/her.png", // ✏️ uska Bitmoji PNG (na ho to emoji dikhega)
+      myAvatar: "Images/me.png",   // ✏️ tumhara Bitmoji PNG
+      dobText: "26 November 2026",  // ✏️ pill me jo dikhna hai, jaise "18 October"
+      dob: { m: 11, d: 26 },       // saal pata ho to y: 2003 bhi add karo (age dikhega)
+      letterTitle: "Dear Dolly",
+      letter: "Meri jaannuu Dolly, meri Ras Malai, tum meri life ki sabse khoobsurat cheez ho. Tumhare saath har din special lagta hai, aur 26 November toh sabse special din hai kyunki is din meri cutee ka birthday aata hai. Hamesha aise hi hasti raho, meri smile ki wajah banti raho. Love, main hamesha tumhare saath hu. I love you so much! Happy Birthday meri Dolly! 🎉❤️",
+      scene: {
+        title:  "Surprise! 👑🎉",
+        intro:  "King {me} cake sajake khada hai… apni Queen Dolly ka wait kar raha hai 👑🎂",
+        meSay:  "Meri jaan ke liye special cake! 🎂",
+        herSay: "Awww Tafu, cake! 🤩 Love you!",
+        wish:   "Ek wish socho ✨",
+        blow:   "Dolly candles bujha rahi hai… phoonk! 🕯️💨",
+        cutting:"Dolly khud apne haath se cake kaat rahi hai 🔪🍰",
+        herFeed:"Lo {me}, pehla bite mere babu ka 😋",
+        meEat:  "Mmm… yummy! 😋",
+        final:  "Happy Birthday {name}! 🥳🎉",
+        herEnd: "Best birthday ever, I love you! 💖"
+      },
+            wishes: [
+        "Happy Birthday {name}! 🎂🎉",
+        "Jaannuu, aaj tumhara din hai aur main sabse zyada khush hu ❤️",
+        "Meri Ras Malai, tumhari smile se mera poora din ban jata hai 😊",
+        "Love, is saal tumhari har wish poori ho, aur meri wish ye hai ki tum hamesha mere saath raho 💍",
+        "Cutee, health, success aur khoob saara pyaar tumhe mile 💖",
+        "Tum jaisi GF milna meri life ki sabse badi luck hai 🍀",
+        "Aaj ki treat meri taraf se… (bas virtual cake 😂🍰) real wali jaldi milke 😘",
+        "Once again, Happy Birthday meri Dolly! I love you! 🥳❤️"
+      ],
+      finalTitle: "Happy Birthday, Queen {name} 👑",
+      finalLines: [
+        "Tumhari muskurahat meri duniya ki sabse khoobsurat cheez hai, jaannuu ✨",
+        "Meri Ras Malai, is saal tumhari har dua qubool ho aur har sapna sach ho 🌸",
+        "Love, tum meri khushi ho, mera sukoon ho 💖",
+        "Cutee, tum jaisi GF milna kisi tohfe se kam nahi 🎁",
+        "Hamesha hasti raho, chamakti raho, aur yun hi mujhse pyaar karti raho 🌟"
+      ],
+      finalSign: "",
+      colors: ['#ff3366','#ff6699','#ffd166','#ffffff','#ff99cc','#fffc00'],
+      autoMusic: true,
+      fireworks: true,       // tap karte hi pataka show (band karna ho to false)
+      snapId: "M🌝🌝N 🖤",   // ✏️ Snapchat ID
+      voice: false,           // Tafu ki awaaz (browser voice) on/off
+      blessing: [
+        "Happy Birthday meri jaan! 🎂",
+        "Jaannuu, rab tumhe hamesha khush rakhe, har dua qubool kare 🤲",
+        "Tumhari life me khoob saari success, pyaar aur khushiyan aayein ✨",
+        "Love, main hamesha tumhare saath hu, har mod par 🖤",
+        "Cutee, bas yun hi muskurati raho! I love you 💖"
+      ]
+    };
+  </script>
+  <script src="lib/jquery.min.js"></script>
+
+  <!-- ❤️ Floating Heart Cursor Script (restored and working) -->
+  <script type="text/javascript">
+  var colours = ['#ff3366', '#ff6699', '#ff33cc', '#ff99cc', '#ff66b2', '#ff0066']; 
+  var minisize = 16; 
+  var maxisize = 28; 
+  var hearts = 66; 
+  var over_or_under = "over"; 
+
+  var x = ox = 400;
+  var y = oy = 300;
+  var swide = 800;
+  var shigh = 600;
+  var sleft = sdown = 0;
+  var herz = [];
+  var herzx = [];
+  var herzy = [];
+  var herzs = [];
+  var kiss = false;
+
+  if (typeof('addRVLoadEvent') != 'function') function addRVLoadEvent(funky) {
+    var oldonload = window.onload;
+    if (typeof(oldonload) != 'function') window.onload = funky;
+    else window.onload = function() {
+      if (oldonload) oldonload();
+      funky();
+    }
+  }
+
+  addRVLoadEvent(mwah);
+
+  function mwah() { if (document.getElementById) {
+    var i, heart;
+    for (i = 0; i < hearts; i++) {
+      heart = createDiv("auto", "auto");
+      heart.style.visibility = "hidden";
+      heart.style.zIndex = (over_or_under == "over") ? "1001" : "0";
+      heart.style.color = colours[i % colours.length];
+      heart.style.pointerEvents = "none";
+      heart.style.opacity = 0.75;
+      heart.appendChild(document.createTextNode(String.fromCharCode(9829)));
+      document.body.appendChild(heart);
+      herz[i] = heart;
+      herzy[i] = false;
+    }
+    set_scroll();
+    set_width();
+    herzle();
+  }}
+
+  function herzle() {
+    var c;
+    if (Math.abs(x - ox) > 1 || Math.abs(y - oy) > 1) {
+      ox = x;
+      oy = y;
+      for (c = 0; c < hearts; c++) if (herzy[c] === false) {
+        herz[c].firstChild.nodeValue = String.fromCharCode(9829);
+        herz[c].style.left = (herzx[c] = x - minisize / 2) + "px";
+        herz[c].style.top = (herzy[c] = y - minisize) + "px";
+        herz[c].style.fontSize = minisize + "px";
+        herz[c].style.fontWeight = 'normal';
+        herz[c].style.visibility = 'visible';
+        herzs[c] = minisize;
+        break;
+      }
+    }
+    for (c = 0; c < hearts; c++) if (herzy[c] !== false) blow_me_a_kiss(c);
+    setTimeout(herzle, 40);
+  }
+
+  document.onmousedown = pucker;
+  document.onmouseup = function() { clearTimeout(kiss); };
+
+  function pucker() {
+    ox = -1;
+    oy = -1;
+    kiss = setTimeout(pucker, 100);
+  }
+
+  function blow_me_a_kiss(i) {
+    herzy[i] -= herzs[i] / minisize + i % 2;
+    herzx[i] += (i % 5 - 2) / 5;
+    if (herzy[i] < sdown - herzs[i] || herzx[i] < sleft - herzs[i] || herzx[i] > sleft + swide - herzs[i]) {
+      herz[i].style.visibility = "hidden";
+      herzy[i] = false;
+    }
+    else if (herzs[i] > minisize + 2 && Math.random() < .5 / hearts) break_my_heart(i);
+    else {
+      if (Math.random() < maxisize / herzy[i] && herzs[i] < maxisize) herz[i].style.fontSize = (++herzs[i]) + "px";
+      herz[i].style.top = herzy[i] + "px";
+      herz[i].style.left = herzx[i] + "px";
+    }
+  }
+
+  function break_my_heart(i) {
+    herz[i].firstChild.nodeValue = String.fromCharCode(9676);
+    herz[i].style.fontWeight = 'bold';
+    herzy[i] = false;
+    setTimeout(() => herz[i].style.visibility = "hidden", 400);
+  }
+
+  document.onmousemove = mouse;
+  function mouse(e) {
+    if (e) { y = e.pageY; x = e.pageX; }
+    else { set_scroll(); y = event.y + sdown; x = event.x + sleft; }
+  }
+
+  window.onresize = set_width;
+  function set_width() {
+    var sw_min = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var sh_min = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    swide = sw_min;
+    shigh = sh_min;
+  }
+
+  window.onscroll = set_scroll;
+  function set_scroll() {
+    sdown = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    sleft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+  }
+
+  function createDiv(height, width) {
+    var div = document.createElement("div");
+    div.style.position = "absolute";
+    div.style.height = height;
+    div.style.width = width;
+    div.style.overflow = "hidden";
+    div.style.backgroundColor = "transparent";
+    return div;
+  }
+  </script>
+</head>
+
+<body>
+  <!-- 👇 Your entire original content (untouched) -->
+  <!-- START -->
+  <div id="wrapper">
+    <div class="flag__birthday">
+      <img src="./Images/1.png" alt="" width="350" class="flag__left">
+      <img src="./Images/1.png" alt="" width="350" class="flag__right">
+    </div>
+
+    <div class="content">
+      <div class="left">
+        <div class="title">
+          <h1 class="happy">
+            <span style="--t: 4s;">H</span>
+            <span style="--t: 4.2s;">a</span>
+            <span style="--t: 4.4s;">p</span>
+            <span style="--t: 4.6s;">p</span>
+            <span style="--t: 4.8s;">y</span>
+          </h1>
+          <h1 class="birthday">
+            <span style="--t: 5s;">B</span>
+            <span style="--t: 5.2s;">i</span>
+            <span style="--t: 5.4s;">r</span>
+            <span style="--t: 5.6s;">t</span>
+            <span style="--t: 5.8s;">h</span>
+            <span style="--t: 6s;">d</span>
+            <span style="--t: 6.2s;">a</span>
+            <span style="--t: 6.4s;">y</span>
+          </h1>
+          <div class="hat">
+            <img src="./Images/hat.png" alt="" width="130">
+          </div>
+        </div>
+
+        <div class="date__of__birth">
+          <span></span>
+        </div>
+
+        <div class="btn">
+          <button id="btn__letter">
+            Click here 
+            <i class="fa-regular fa-envelope"></i>
+          </button>
+          <button id="btn__cake">Cake time 🎂</button>
+          <button id="btn__snap">Snap wishes 👻</button>
+          <button id="btn__video">Our video 💋</button>
+        </div>
+        <div class="countdown" id="countdown"></div>
+      </div>
+
+      <div class="right">
+        <div class="box__account">
+          <div class="image">
+            <img src="./Images/duo.jpg" alt="Dolly and Tafu" class="duo">
+          </div>
+          <div class="name">
+            <i class="fa-solid fa-heart"></i>
+            <span>Cutie</span>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <div class="balloon_one">
+            <img width="100px" src="./Images/balloon1.png" alt="">
+          </div>
+          <div class="balloon_two">
+            <img width="100px" src="./Images/balloon2.png" alt="">
+          </div>
+        </div>
+
+        <div class="cricle">
+          <div class="text__cricle">
+            <span style="--i: 1;">h</span>
+            <span style="--i: 2;">a</span>
+            <span style="--i: 3;">p</span>
+            <span style="--i: 4;">p</span>
+            <span style="--i: 5;">y</span>
+            <span style="--i: 6;">-</span>
+            <span style="--i: 7;">b</span>
+            <span style="--i: 8;">i</span>
+            <span style="--i: 9;">r</span>
+            <span style="--i: 10;">t</span>
+            <span style="--i: 11;">h</span>
+            <span style="--i: 12;">d</span>
+            <span style="--i: 13;">a</span>
+            <span style="--i: 14;">y</span>
+            <span style="--i: 15;">-</span>
+          </div>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="decorate_star star1" style="--t: 15s;"></div>
+    <div class="decorate_star star2" style="--t: 15.2s;"></div>
+    <div class="decorate_star star3" style="--t: 15.4s;"></div>
+    <div class="decorate_star star4" style="--t: 15.6s;"></div>
+    <div class="decorate_star star5" style="--t: 15.8s;"></div>
+
+    <div class="decorate_flower--one" style="--t: 15s;">
+      <img width="20" src="./Images/decorate_flower.png" alt="">
+    </div>
+    <div class="decorate_flower--two" style="--t: 15.3s;">
+      <img width="20" src="./Images/decorate_flower.png" alt="">
+    </div>
+    <div class="decorate_flower--three" style="--t: 15.6s;">
+      <img width="20" src="./Images/decorate_flower.png" alt="">
+    </div>
+
+    <div class="decorate_bottom">
+      <img src="./Images/decorate.png" alt="" width="100">
+    </div>
+    <div class="smiley__icon">
+      <img src="./Images/smiley_icon.png" alt="" width="100">
+    </div>
+
+    <button id="music__toggle" title="Music">🎵</button>
+    <audio id="song" src="audio/song.mp3" loop preload="auto"></audio>
+
+    <div class="cake__overlay" id="cake__overlay">
+      <h2 id="cake__title"></h2>
+      <p id="wish__text"></p>
+      <div class="stage" id="stage">
+        <div class="floor"></div>
+        <div class="s_table"></div><div class="s_cake" id="s_cake"><svg viewBox="0 0 200 200"><defs><linearGradient id="gC"><stop offset="0" stop-color="#e6cdb8"/><stop offset=".35" stop-color="#fffaf3"/><stop offset=".7" stop-color="#fff0e2"/><stop offset="1" stop-color="#d9bba2"/></linearGradient><linearGradient id="gP"><stop offset="0" stop-color="#df8fa0"/><stop offset=".35" stop-color="#ffc6d1"/><stop offset=".7" stop-color="#f5aebc"/><stop offset="1" stop-color="#cf7b8d"/></linearGradient><linearGradient id="gM"><stop offset="0" stop-color="#9a9aa6"/><stop offset=".5" stop-color="#f4f4f8"/><stop offset="1" stop-color="#8c8c98"/></linearGradient><radialGradient id="gF" cx=".5" cy=".7" r=".6"><stop offset="0" stop-color="#fff8c8"/><stop offset=".45" stop-color="#ffb52e"/><stop offset="1" stop-color="#ff5a00" stop-opacity="0"/></radialGradient></defs><ellipse cx="100" cy="172" rx="97" ry="14" fill="url(#gM)"/><ellipse cx="100" cy="168" rx="92" ry="12" fill="#f6f6fa"/><path d="M18 120V166A82 15 0 0 0 182 166V120Z" fill="url(#gP)"/><path d="M18 140A82 15 0 0 0 182 140" stroke="#f0b07a" stroke-width="7" fill="none"/><path d="M18 153A82 15 0 0 0 182 153" stroke="#fff5ec" stroke-width="4" fill="none"/><g class="cutgap"><path d="M68 133L96 129V173L68 177Z" fill="#fbe3cf"/><path d="M68 147L96 144V152L68 155Z" fill="#f0b07a"/><path d="M68 161L96 159V163L68 165Z" fill="#f0b07a"/></g><ellipse cx="100" cy="120" rx="82" ry="15" fill="#fff7ef"/><path d="M45 80V120A55 10 0 0 0 155 120V80Z" fill="url(#gC)"/><path d="M45 100A55 10 0 0 0 155 100" stroke="#f0b07a" stroke-width="5" fill="none"/><circle cx="24" cy="124.6" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="33" cy="127.6" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="42" cy="129.6" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="51" cy="131.0" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="60" cy="132.1" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="69" cy="132.9" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="78" cy="133.5" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="87" cy="133.8" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="96" cy="134.0" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="105" cy="134.0" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="114" cy="133.8" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="123" cy="133.4" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="132" cy="132.8" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="141" cy="132.0" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="150" cy="130.9" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="159" cy="129.4" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="168" cy="127.4" r="4.2" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="26" cy="169.5" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="36" cy="172.4" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="46" cy="174.3" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="56" cy="175.7" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="66" cy="176.6" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="76" cy="177.3" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="86" cy="177.8" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="96" cy="178.0" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="106" cy="178.0" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="116" cy="177.7" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="126" cy="177.2" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="136" cy="176.5" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="146" cy="175.4" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="156" cy="174.0" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><circle cx="166" cy="171.9" r="4.5" fill="#fff" stroke="#f4c3cc" stroke-width="1"/><ellipse cx="100" cy="80" rx="55" ry="10" fill="#fff"/><ellipse cx="100" cy="80" rx="51" ry="8.5" fill="#4b2214"/><rect x="49" y="81.9" width="6" height="9" rx="3" fill="#4b2214"/><rect x="58" y="84.1" width="6" height="16" rx="3" fill="#4b2214"/><rect x="67" y="85.4" width="6" height="12" rx="3" fill="#4b2214"/><rect x="76" y="86.2" width="6" height="19" rx="3" fill="#4b2214"/><rect x="85" y="86.8" width="6" height="15" rx="3" fill="#4b2214"/><rect x="94" y="87.0" width="6" height="11" rx="3" fill="#4b2214"/><rect x="103" y="86.9" width="6" height="18" rx="3" fill="#4b2214"/><rect x="112" y="86.6" width="6" height="14" rx="3" fill="#4b2214"/><rect x="121" y="86.0" width="6" height="10" rx="3" fill="#4b2214"/><rect x="130" y="85.0" width="6" height="17" rx="3" fill="#4b2214"/><rect x="139" y="83.5" width="6" height="13" rx="3" fill="#4b2214"/><circle cx="84" cy="86" r="5" fill="#c8102e"/><circle cx="82.5" cy="84.5" r="1.4" fill="#fff" opacity=".7"/><path d="M84 81Q87 76 90 75" stroke="#2d6a2d" fill="none" stroke-width="1.2"/><circle cx="116" cy="86" r="5" fill="#c8102e"/><circle cx="114.5" cy="84.5" r="1.4" fill="#fff" opacity=".7"/><path d="M116 81Q119 76 122 75" stroke="#2d6a2d" fill="none" stroke-width="1.2"/><rect x="65.5" y="55" width="5" height="26" rx="1" fill="#ff7aa8"/><rect x="66.5" y="55" width="1.2" height="26" fill="#fff" opacity=".5"/><line x1="68" y1="55" x2="68" y2="51" stroke="#333" stroke-width=".9"/><path class="smoke" d="M68 50q-3-5 0-9q3-5 0-9" stroke="#e6e6e6" stroke-width="1.6" fill="none"/><g class="flame"><ellipse cx="68" cy="45.5" rx="3.4" ry="6.5" fill="url(#gF)"/></g><rect x="81.5" y="55" width="5" height="26" rx="1" fill="#7ad1ff"/><rect x="82.5" y="55" width="1.2" height="26" fill="#fff" opacity=".5"/><line x1="84" y1="55" x2="84" y2="51" stroke="#333" stroke-width=".9"/><path class="smoke" d="M84 50q-3-5 0-9q3-5 0-9" stroke="#e6e6e6" stroke-width="1.6" fill="none"/><g class="flame"><ellipse cx="84" cy="45.5" rx="3.4" ry="6.5" fill="url(#gF)"/></g><rect x="97.5" y="55" width="5" height="26" rx="1" fill="#ff7aa8"/><rect x="98.5" y="55" width="1.2" height="26" fill="#fff" opacity=".5"/><line x1="100" y1="55" x2="100" y2="51" stroke="#333" stroke-width=".9"/><path class="smoke" d="M100 50q-3-5 0-9q3-5 0-9" stroke="#e6e6e6" stroke-width="1.6" fill="none"/><g class="flame"><ellipse cx="100" cy="45.5" rx="3.4" ry="6.5" fill="url(#gF)"/></g><rect x="113.5" y="55" width="5" height="26" rx="1" fill="#7ad1ff"/><rect x="114.5" y="55" width="1.2" height="26" fill="#fff" opacity=".5"/><line x1="116" y1="55" x2="116" y2="51" stroke="#333" stroke-width=".9"/><path class="smoke" d="M116 50q-3-5 0-9q3-5 0-9" stroke="#e6e6e6" stroke-width="1.6" fill="none"/><g class="flame"><ellipse cx="116" cy="45.5" rx="3.4" ry="6.5" fill="url(#gF)"/></g><rect x="129.5" y="55" width="5" height="26" rx="1" fill="#ff7aa8"/><rect x="130.5" y="55" width="1.2" height="26" fill="#fff" opacity=".5"/><line x1="132" y1="55" x2="132" y2="51" stroke="#333" stroke-width=".9"/><path class="smoke" d="M132 50q-3-5 0-9q3-5 0-9" stroke="#e6e6e6" stroke-width="1.6" fill="none"/><g class="flame"><ellipse cx="132" cy="45.5" rx="3.4" ry="6.5" fill="url(#gF)"/></g></svg></div>
+        <div class="walker" id="w_her"><img class="char" id="c_her" src="Images/her_full.png" alt="Dolly"><div class="s_knife" id="s_knife"><svg viewBox="0 0 200 30"><defs><linearGradient id="gK" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fafafc"/><stop offset=".5" stop-color="#b9bcc6"/><stop offset="1" stop-color="#8a8d99"/></linearGradient></defs><rect x="0" y="8" width="50" height="15" rx="6" fill="#3a2418"/><circle cx="14" cy="15.5" r="1.6" fill="#c9a227"/><circle cx="34" cy="15.5" r="1.6" fill="#c9a227"/><rect x="48" y="7" width="5" height="17" fill="#b8b8c2"/><path d="M53 8H190Q198 12 200 15Q150 25 53 23Z" fill="url(#gK)"/><path d="M56 12H185" stroke="#fff" stroke-width="1" opacity=".8"/></svg></div></div>
+        <div class="walker" id="w_him"><img class="char" id="c_him" src="Images/him_full.png" alt="Tafu"></div>
+        <div class="bubble b_her" id="b_her"></div>
+        <div class="bubble b_him" id="b_him"></div>
+                <div class="s_slice" id="s_slice"><svg viewBox="0 0 70 62"><ellipse cx="36" cy="54" rx="30" ry="6" fill="#f2f2f6" stroke="#bbb"/><path d="M52 16L63 21V50L52 46Z" fill="#f2b2bf"/><path d="M14 20L52 16V46L14 50Z" fill="#ffe9d6"/><path d="M14 31L52 27V33L14 37Z" fill="#f0b07a"/><path d="M14 20L26 13L63 17L52 16Z" fill="#fff"/><path d="M14 20L52 16V21L14 25Z" fill="#4b2214"/></svg></div>
+      </div>
+      <div class="cake__btns">
+        <button id="selfie" style="display:none">Snap a selfie 📸</button>
+        <button id="relight" class="ghost">Replay 🔁</button>
+        <button id="cake__close" class="ghost">Close ✖</button>
+      </div>
+      <div class="wcard" id="wcard">
+        <div class="wcard__in">
+          <div class="wcard__spark">✨ 🎂 ✨</div>
+          <h3 id="wcard__title"></h3>
+          <div id="wcard__lines"></div>
+          <div class="wcard__sign" id="wcard__sign"></div>
+          <div class="wcard__btns">
+            <button id="wc_selfie">Snap a selfie 📸</button>
+            <button id="wc_replay" class="ghost">Replay 🔁</button>
+            <button id="wc_close" class="ghost">Close ✖</button>
+          </div>
+        </div>
+      </div>
+      <div class="flash" id="flash"></div>
+      <div class="snaptoast" id="snaptoast">📸 Saved to Memories 👻</div>
+    </div>
+
+    <div class="chat__overlay" id="chat__overlay">
+      <div class="phone">
+        <div class="chat__head">
+          <div class="ghost__badge">👻</div>
+          <div><b id="chat__name"></b><small>👻 M🌝🌝N 🖤 · 🔥 Snap streak: forever</small></div>
+          <button id="chat__close">✖</button>
+        </div>
+        <div class="chat__body" id="chat__body"></div>
+        <div class="chat__foot"><span>Send a chat…</span><button id="chat__replay">Replay 🔁</button></div>
+      </div>
+    </div>
+
+    <div id="vid__overlay">
+      <button id="vid__close">✖</button>
+      <div class="vid__box">
+        <video id="vid" src="video/our_video.mp4" controls playsinline preload="metadata"></video>
+        <p id="vid__err">Video abhi add nahi hui 💋</p>
+      </div>
+    </div>
+    <div id="gate">
+      <div class="gate__ghost">👻</div>
+      <h2 id="gate__h"></h2>
+      <p>Meri jaan ke liye ek chhota sa surprise 🎁</p>
+      <button id="gate__btn">Tap to open 💌</button>
+    </div>
+
+    <!-- Letter Box -->
+    <div class="box__letter">
+      <div class="letter__border">
+        <div class="letter">
+          <div class="title__letter"></div>
+          <div class="content__letter">
+            <div class="left">
+              <img id="heart__letter" src="https://media0.giphy.com/media/c76IJLufpNwSULPk77/giphy.gif" alt="">
+              <img class="heart heart_1" style="--t: 0.2s" width="20" src="./Images/heart.png" alt="">
+              <img class="heart heart_2" style="--t: 0.4s" width="20" src="./Images/heart.png" alt="">
+              <img class="heart heart_3" style="--t: 0.6s" width="20" src="./Images/heart.png" alt="">
+              <img class="heart heart_4" style="--t: 0.8s" width="20" src="./Images/heart.png" alt="">
+            </div>
+            <div class="right">
+              <div class="love__img">
+                <img src="https://media4.giphy.com/media/W4jyjmIpnw6e38B6Qc/giphy.gif" alt="" width="220">
+              </div>
+              <div class="text__letter">
+                <p></p>
+              </div>
+              <img id="mewmew" width="80" src="./Images/mewmew.gif" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="close">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Original script unchanged -->
+  <script>
+    let datetxt = CONFIG.dobText;
+    let datatxtletter = CONFIG.letter;
+    let titleLetter = CONFIG.letterTitle;
+    let charArrDate = datetxt.split('');
+    let charArrDateLetter = datatxtletter.split('');
+    let charArrTitle = titleLetter.split('');
+    let currentIndex = 0;
+    let currentIndexLetter = 0;
+    let currentIndexTitle = 0;
+    let date__of__birth = document.querySelector(".date__of__birth span");
+    let text__letter = document.querySelector(".text__letter p");
+
+    document.addEventListener('intro-go', function(){ setTimeout(function(){
+      timeDatetxt = setInterval(function(){
+        if(currentIndex < charArrDate.length){
+          date__of__birth.textContent += charArrDate[currentIndex];
+          currentIndex++;
+        } else {
+          let i = document.createElement("i");
+          i.className = "fa-solid fa-star";
+          document.querySelector(".date__of__birth").prepend(i);
+          document.querySelector(".date__of__birth").appendChild(i.cloneNode(true));
+          clearInterval(timeDatetxt);
+        }
+      },100)
+    },12000); });
+
+    var intervalContent;
+    var intervalTitle;
+    $("#btn__letter").on("click", function(){
+      $(".box__letter").slideDown();
+      setTimeout(function(){
+        $(".letter__border").slideDown();
+      },1000);
+      setTimeout(function(){
+        intervalTitle = setInterval(function(){
+          if(currentIndexTitle < charArrTitle.length){
+            document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
+            let i = document.createElement("i");
+            i.className = "fa-solid fa-heart";
+            document.querySelector(".title__letter").appendChild(i);
+            currentIndexTitle++;
+          } else {
+            clearInterval(intervalTitle);
+          }
+        },100);
+      },2000);
+      setTimeout(function(){
+        document.querySelector("#heart__letter").classList.add("animationOp");
+        document.querySelector(".love__img").classList.add("animationOp");
+        document.querySelector("#mewmew").classList.add("animationOp");
+      },2800);
+      setTimeout(function(){
+        document.querySelectorAll(".heart").forEach((item)=>{
+          item.classList.add("animation");
+        })
+      },3500);
+      setTimeout(function(){
+        intervalContent = setInterval(function(){
+          if(currentIndexLetter < charArrDateLetter.length){
+            text__letter.textContent += charArrDateLetter[currentIndexLetter];
+            currentIndexLetter++;
+          } else {
+            clearInterval(intervalContent);
+          }
+        },50);
+      },6000);
+    });
+
+    $(".close").on("click", function(){
+      clearInterval(intervalContent);
+      document.querySelector(".title__letter").textContent = "";
+      text__letter.textContent = "";
+      currentIndexLetter = 0;
+      currentIndexTitle = 0;
+      document.querySelector("#heart__letter").classList.remove("animationOp");
+      document.querySelector(".love__img").classList.remove("animationOp");
+      document.querySelector("#mewmew").classList.remove("animationOp");
+      document.querySelectorAll(".heart").forEach((item)=>{
+        item.classList.remove("animation");
+      });
+      $(".box__letter").slideUp();
+      $(".letter__border").slideUp();
+    });
+  </script>
+  <script src="extras.js"></script>
+</body>
+</html>
